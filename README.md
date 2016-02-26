@@ -6,8 +6,14 @@
 1. cocoapods安装
 
    在podfile中添加如下配置：
+
+
    pod 'AFNetworking', '~> 3.0.4'
+
+
    pod 'PayKernelLibrary', :git =>'https://github.com/zhougang123/PayKernelLibrary.git', :tag =>'1.0.0'
+
+
    pod 'OnLineLib', :git =>'https://github.com/zhougang123/OnLineLib.git', :tag =>'1.0.0'
 
 
