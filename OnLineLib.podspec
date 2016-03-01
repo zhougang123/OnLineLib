@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
     s.name         = "OnLineLib"
 
-    s.version      = "1.0.0"
+    s.version      = "1.0.1"
 
     s.summary      = "OnLineLib is a sdk."
 
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
 
     s.platform     = :ios, "7.0"
 
-    s.source       = { :git => "https://github.com/zhougang123/OnLineLib.git", :tag => "1.0.0" }
+    s.source       = { :git => "https://github.com/zhougang123/OnLineLib.git", :tag => "1.0.1" }
 
     s.source_files  = "Pay/*.{h,m}"
 

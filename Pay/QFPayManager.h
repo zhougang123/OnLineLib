@@ -110,6 +110,11 @@ typedef NS_ENUM(NSInteger, QFPayManagerStatus){
 };
 
 
+typedef NS_ENUM(NSInteger, QFNetworkReachability){
+    QFNetworkReachabilityNotReachable,//网络连接不通
+    QFNetworkReachabilityReachable,   //网络连接正常
+};
+
 @interface QFPayManager : NSObject
 
 @property (nonatomic, assign) APIEnvironmentType apiEnvironmentType;//配置api请求的服务器
@@ -117,6 +122,12 @@ typedef NS_ENUM(NSInteger, QFPayManagerStatus){
 @property (nonatomic, assign) QFPayManagerStatus payManagerStatus;  //调用支付以前请先检查工作状态
 
 + (instancetype)shared;
+
+/***
+ ***检测网络状态
+ ***/
+- (void)payManagerNetWorReachability:(void (^)(QFNetworkReachability reachType)) reachabilityBlock;
+
 
 /***
  ***QFPayManager初始化, 调用之前请先配置api请求的服务器， 在程序启动的时候调用
@@ -183,6 +194,9 @@ typedef NS_ENUM(NSInteger, QFPayManagerStatus){
  ***微信刷卡支付
  ***@amount 收款的金额
  ***@swipeVC 二维码扫描界面，可以定制
+ ***createSuccessBlock 预下单成功的回调
+ ***collectSuccessBlock 收款成功的回调
+ ***waitingBlock   轮询的回调
  ***/
 - (void)WXPaySiwpeWithAmount:(NSString *)amount
              swipeController:(QFSwipeQRCodeViewController *)swipeVC
@@ -194,6 +208,9 @@ typedef NS_ENUM(NSInteger, QFPayManagerStatus){
 /***
  ***微信正扫,将金额提交到服务器预下单, 等待支付结果，若果没有支付需要关闭订单
  ***@amount 收款金额
+ ***createSuccessBlock 预下单成功的回调
+ ***collectSuccessBlock 收款成功的回调
+ ***waitingBlock   轮询的回调
  ***/
 - (void)WXPayPrecreateOrderWithAmount:(NSString *)amount
                    createOrderSuccess:(void (^)(QFOrderInfo *orderIno))createSuccessBlock
@@ -230,6 +247,9 @@ typedef NS_ENUM(NSInteger, QFPayManagerStatus){
  ***支付宝刷卡支付
  ***@amount 收款的金额
  ***@qrQRCode 扫描获取到的二维码
+ ***createSuccessBlock 预下单成功的回调
+ ***collectSuccessBlock 收款成功的回调
+ ***waitingBlock   轮询的回调
  ***/
 - (void)AliPayWihtAmount:(NSString *)amount
                   QRCode:(NSString *)qrQRCode
@@ -241,6 +261,9 @@ typedef NS_ENUM(NSInteger, QFPayManagerStatus){
  ***支付宝刷卡收款
  ***@amount 收款的金额
  ***@swipeVC 二维码扫描界面，可以定制
+ ***createSuccessBlock 预下单成功的回调
+ ***collectSuccessBlock 收款成功的回调
+ ***waitingBlock   轮询的回调
  ***/
 - (void)AliPayWihtAmount:(NSString *)amount
          swipeController:(QFSwipeQRCodeViewController *)swipeVC
