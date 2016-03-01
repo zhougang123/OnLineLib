@@ -26,10 +26,16 @@
 @property (nonatomic, copy) NSArray  *allOperatorID;    //所有操作员的id
 @property (nonatomic, copy) NSString *auditState;       //审核状态
 @property (nonatomic, copy) NSString *joinedDate;       //商户加入的日期
+
 //商户绑定收款银行卡的信息
 @property (nonatomic, copy) NSString *branchBankCode;   //支行编码
 @property (nonatomic, copy) NSString *bankCardNO;           //银行卡号
 @property (nonatomic, copy) NSString *bankCardUserName;     //开户人姓名
+
+//用户所收币种信息
+@property (nonatomic, copy) NSString *collectCurrencyCode;//所收币种的代码 如人民币156
+@property (nonatomic, copy) NSString *collectCurrency;    //所收币种的简写 hkd
+@property (nonatomic, copy) NSString *collectCurrencyDesc;//所收币种的描述 港币
 
 @end
 
@@ -56,6 +62,13 @@ typedef NS_ENUM(NSInteger, QFPayOrderResultType)
     QFPayOrderResultTypeCloseFailed,
     QFPayOrderResultTypePreAuthSuccess//预授权已完成
     
+};
+
+typedef NS_ENUM(NSInteger, QFPayOrderType)
+{
+    QFPayOrderTypeWXOrder,     //微信流水
+    QFPayOrderTypeAlipayOrder, //支付宝
+    QFPayOrderTypeSwipeCard    //刷卡
 };
 
 
@@ -94,6 +107,7 @@ typedef NS_ENUM(NSInteger, QFPayOrderResultType)
 @property (nonatomic, copy  ) UIImage              *QRCodeImage;
 
 @property (nonatomic, assign) QFPayOrderResultType orderResultType;//订单状态
+@property (nonatomic, assign) QFPayOrderType       orderType;//流水类型
 @end
 
 
@@ -166,6 +180,12 @@ typedef NS_ENUM(NSInteger, QFNetworkReachability){
  ***会清除掉缓存的所有登录账号相关的数据
  ***/
 - (void)payManagerLogout;
+
+
+/***
+ ***获取当前登录账号的userinfo
+ ***/
+- (QFUserInfo *)currentUserInfo;
 
 
 /***
