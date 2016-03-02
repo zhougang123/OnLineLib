@@ -1,4 +1,4 @@
-#
+
 #  Be sure to run `pod spec lint OnLineLib.podspec' to ensure this is a
 #  valid spec and to remove all comments including this before submitting the spec.
 #
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
     s.name         = "OnLineLib"
 
-    s.version      = "1.0.2"
+    s.version      = "1.1.0"
 
     s.summary      = "OnLineLib is a sdk."
 
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
 
     s.platform     = :ios, "7.0"
 
-    s.source       = { :git => "https://github.com/zhougang123/OnLineLib.git", :tag => "1.0.2" }
+    s.source       = { :git => "https://github.com/zhougang123/OnLineLib.git", :tag => "1.1.0" }
 
     s.source_files  = "Pay/*.{h,m}"
 
