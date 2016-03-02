@@ -169,11 +169,11 @@ typedef NS_ENUM(NSInteger, QFNetworkReachability){
  ***@pwd     密码
  ***return   userInfo用户信息
  ***/
-- (void)payManagerLoginWithMaserAccount:(NSString *)account
-                             operatorID:(NSString *)operatorID
-                               password:(NSString *)pwd
-                                success:(void (^)(QFUserInfo *userInfo))successBlock
-                                 failed:(void (^)(NSString *errorMsg))failedBlock;
+- (void)payManagerLoginWithMasterAccount:(NSString *)account
+                              operatorID:(NSString *)operatorID
+                                password:(NSString *)pwd
+                                 success:(void (^)(QFUserInfo *userInfo))successBlock
+                                  failed:(void (^)(NSString *errorMsg))failedBlock;
 
 /***
  ***退出登录
@@ -331,7 +331,7 @@ typedef NS_ENUM(NSInteger, QFNetworkReachability){
 - (void)qfTradeListWithPageNumber:(NSInteger )pageNumber
                   startDateString:(NSString *)startDateStr
                     endDateString:(NSString *)endDateStr
-                          success:(void (^)(NSArray *allDateArray, NSDictionary *tradeOrdersDict, QFTradeLastestInfo *tradeLastestInfo))successBlock
+                          success:(void (^)(NSArray *allDateArray, NSDictionary *tradeOrdersDict, QFTradeLastestInfo *tradeLastestInfo, NSString *serverTime))successBlock
                            failed:(void (^)(NSString *errorMsg))failedBlock;
 
 
